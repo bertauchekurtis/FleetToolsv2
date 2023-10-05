@@ -2,6 +2,7 @@ name: Deploy to shinyapps.io
 on:
   schedule:
     - cron: '0 3 * * 6'
+  workflow_dispatch:
       
 jobs:
   deploy:
