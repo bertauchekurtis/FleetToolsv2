@@ -6,12 +6,14 @@ from datetime import date
 import pandas as pd
 import os
 import sys
+import chromedriver_autoinstaller
+chromedriver_autoinstaller.install()
 args = sys.argv
 
 USERNAME = args[1]
 PASSWORD = args[2]
 
-driver = webdriver.Edge()
+driver = webdriver.Chrome()
 driver.get("https://www.airline-club.com/")
 
 # login to AC
