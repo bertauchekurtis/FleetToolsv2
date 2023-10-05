@@ -25,7 +25,9 @@ jobs:
         run: |
           python ./python/fetch.py "$ACUSERNAME" "$ACPASSWORD" "$MFCUSERNAME" "$MFCPASSWORD"
       - name: Save CSV Files
-        uses: actions/upload-artifact@v3
-        with:
-          name: fleetReportFolder
-          path: ./data/fleetReports/
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "added new report files"
+          git push
