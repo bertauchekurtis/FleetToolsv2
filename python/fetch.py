@@ -110,6 +110,7 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
+    break
 
 
 fleetdf.fillna(0,inplace=True)
@@ -219,6 +220,7 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
+    break
 
 
 fleetdf.fillna(0,inplace=True)
