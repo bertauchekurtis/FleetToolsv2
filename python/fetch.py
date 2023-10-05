@@ -59,8 +59,8 @@ for elem in airplaneTabs:
     numInCirculation = numRow.text
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
-    print(modelName)
-    print(numInCirculation)
+    #print(modelName)
+    #print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
  
 # write to file
@@ -102,8 +102,8 @@ for elem in airlineTabs:
     # get fleet elements
     fleetElements = driver.find_elements(By.XPATH, "//div[@id='rivalDetails']//div[@class='table data fleetList']/div[@class='table-row']/div[@class='cell']")
     for i in range(0, len(fleetElements), 2):
-        print(fleetElements[i].text)
-        print(fleetElements[i+1].text)
+        #print(fleetElements[i].text)
+        #print(fleetElements[i+1].text)
         totalSize += int(fleetElements[i+1].text)
         thisAirlineList.append([fleetElements[i].text, int(fleetElements[i+1].text)])
 
@@ -127,8 +127,9 @@ driver.quit()
 USERNAME = args[3]
 PASSWORD = args[4]
 
-driver = webdriver.Edge()
-driver.get("https://myfly.club")
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome(options=chrome_options)
 
 # login to AC
 element = driver.find_element(By.ID, "loginUserName")
@@ -169,8 +170,8 @@ for elem in airplaneTabs:
     numInCirculation = numRow.text
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
-    print(modelName)
-    print(numInCirculation)
+    #print(modelName)
+    #print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
  
 # write to file
@@ -212,8 +213,8 @@ for elem in airlineTabs:
     # get fleet elements
     fleetElements = driver.find_elements(By.XPATH, "//div[@id='rivalDetails']//div[@class='table data fleetList']/div[@class='table-row']/div[@class='cell']")
     for i in range(0, len(fleetElements), 2):
-        print(fleetElements[i].text)
-        print(fleetElements[i+1].text)
+        #print(fleetElements[i].text)
+        #print(fleetElements[i+1].text)
         totalSize += int(fleetElements[i+1].text)
         thisAirlineList.append([fleetElements[i].text, int(fleetElements[i+1].text)])
 
