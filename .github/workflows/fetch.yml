@@ -1,5 +1,7 @@
 name: Fetch Data
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '0 0 * * 6'
 
 jobs:
   Fetch:
