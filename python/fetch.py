@@ -7,13 +7,17 @@ import pandas as pd
 import os
 import sys
 import chromedriver_autoinstaller
+from selenium.webdriver.chrome.options import Options
+
 chromedriver_autoinstaller.install()
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome(options=chrome_options)
 args = sys.argv
 
 USERNAME = args[1]
 PASSWORD = args[2]
 
-driver = webdriver.Chrome()
 driver.get("https://www.airline-club.com/")
 
 # login to AC
