@@ -124,6 +124,7 @@ path = "./data/fleetReports/" + stringData + "-AC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
 
+print("BEGINNING MFC")
 USERNAME = args[3]
 PASSWORD = args[4]
 
