@@ -120,10 +120,10 @@ for elem in airlineTabs:
 
 
 fleetdf.fillna(0,inplace=True)
-path = "../data/fleetReports/" + stringData + "-AC-fleetReport.csv"
+path = "./data/fleetReports/" + stringData + "-AC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
-
+exit()
 USERNAME = args[3]
 PASSWORD = args[4]
 
