@@ -1,0 +1,31 @@
+name: Fetch Data
+on: workflow_dispatch
+
+jobs:
+  Fetch:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.6
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Fetch Data
+        env:
+          ACUSERNAME:  ${{ secrets.ACUSERNAME }}
+          ACPASSWORD:  ${{ secrets.ACPASSWORD }}
+          MFCUSERNAME: ${{ secrets.MFCUSERNAME }}
+          MFCPASSWORD: ${{ secrets.MFCPASSWORD }}
+        run: |
+          python ./python/fetch.py "$ACUSERNAME" "$ACPASSWORD" "$MFCUSERNAME" "$MFCPASSWORD"
+      - name: Save CSV Files
+        uses: actions/upload-artifact@v3
+        with:
+          name: fleetReportFolder
+          path: ./data/fleetReports/
