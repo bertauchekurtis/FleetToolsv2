@@ -116,14 +116,14 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
-    break
+
 
 
 fleetdf.fillna(0,inplace=True)
 path = "./data/fleetReports/" + stringData + "-AC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
-exit()
+
 USERNAME = args[3]
 PASSWORD = args[4]
 
@@ -226,13 +226,13 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
-    break
+
 
 
 fleetdf.fillna(0,inplace=True)
 fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Rat Wings')]
 fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Koala Air')]
 fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Ajwaa')]
-path = "../data/fleetReports/" + stringData + "-MFC-fleetReport.csv"
+path = "./data/fleetReports/" + stringData + "-MFC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
