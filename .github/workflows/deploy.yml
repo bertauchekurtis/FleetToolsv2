@@ -2,8 +2,6 @@ name: Deploy to shinyapps.io
 on:
 
   # run on any push 
-  push:
-
   # run on request (via button in actions menu)
   workflow_dispatch:
       
@@ -17,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: deploy
-        uses: BDSI-Utwente/shinyapps-deploy-github-action@v2
+        uses: BDSI-Utwente/shinyapps-deploy-github-action@v1
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
           appName: AirlineClubFleetTools
