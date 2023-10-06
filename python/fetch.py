@@ -162,14 +162,16 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(4)
+    sleep(2)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
     modelName = nameRow.text
+    print(modelName)
     modelName = modelName.replace("Model:", "")
     modelName = modelName.replace("\n", "")
     numInCirculation = numRow.text
+    print(numInCirculation)
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
     print(modelName)
@@ -204,7 +206,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(6)
+    sleep(3)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
