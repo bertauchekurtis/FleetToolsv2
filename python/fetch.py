@@ -173,7 +173,7 @@ for elem in airplaneTabs:
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
     print(modelName)
-    #print(numInCirculation)
+    print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
  
 # write to file
