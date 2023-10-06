@@ -49,7 +49,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(1.5)
+    sleep(1)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -91,7 +91,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(2.5)
+    sleep(2)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
@@ -116,6 +116,7 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
+    break
 
 
 
@@ -131,7 +132,7 @@ PASSWORD = args[4]
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(options=chrome_options)
-
+driver.get("https://myfly.club")
 # login to AC
 element = driver.find_element(By.ID, "loginUserName")
 element.clear()
@@ -161,7 +162,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(1.5)
+    sleep(1)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -203,7 +204,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(2.5)
+    sleep(2)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
