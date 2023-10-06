@@ -49,7 +49,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(1)
+    sleep(1.5)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -59,7 +59,7 @@ for elem in airplaneTabs:
     numInCirculation = numRow.text
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
-    #print(modelName)
+    print(modelName)
     #print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
  
@@ -161,7 +161,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(1)
+    sleep(1.5)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -171,12 +171,12 @@ for elem in airplaneTabs:
     numInCirculation = numRow.text
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
-    #print(modelName)
+    print(modelName)
     #print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
  
 # write to file
-sleep(1)
+sleep(2)
 df = pd.DataFrame(planeNameAndNumInCirculation, columns=['Model', 'NumberInCirculation'])
 cwd = os.getcwd()
 today = date.today()
@@ -194,7 +194,7 @@ sleep(5)
 
 # grab all the clickable airlines
 airlineTabs = driver.find_elements(By.XPATH, "//div[@id='rivalsTable']//div[@class='table-row clickable']")
-sleep(1)
+sleep(2)
 # setup df
 listOfPlaneTypes = df['Model'].tolist()
 listOfPlaneTypes.insert(0, "Total")
