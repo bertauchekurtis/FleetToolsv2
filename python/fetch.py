@@ -123,15 +123,15 @@ for elem in airlineTabs:
 fleetdf.fillna(0,inplace=True)
 path = "./data/fleetReports/" + stringData + "-AC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
-driver.quit()
+#driver.quit()
 
 print("====================BEGINNING MFC=============================")
 USERNAME = args[3]
 PASSWORD = args[4]
 
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-driver = webdriver.Chrome(options=chrome_options)
+#chrome_options = Options()
+#chrome_options.add_argument('--headless')
+#driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://myfly.club")
 # login to AC
 element = driver.find_element(By.ID, "loginUserName")
