@@ -125,7 +125,7 @@ path = "./data/fleetReports/" + stringData + "-AC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
 
-print("BEGINNING MFC")
+print("====================BEGINNING MFC=============================")
 USERNAME = args[3]
 PASSWORD = args[4]
 
@@ -162,7 +162,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(1)
+    sleep(2)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -204,7 +204,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(2)
+    sleep(3)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
