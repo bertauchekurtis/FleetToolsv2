@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f ./python/requirements.txt ]; then pip install -r ./python/requirements.txt; fi
+          pip install -r ./python/requirements.txt
       - name: Fetch Data
         env:
           MFCUSERNAME: ${{ secrets.MFCUSERNAME }}
