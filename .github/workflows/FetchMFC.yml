@@ -24,7 +24,7 @@ jobs:
           MFCUSERNAME: ${{ secrets.MFCUSERNAME }}
           MFCPASSWORD: ${{ secrets.MFCPASSWORD }}
         run: |
-          python ./python/fetch_MFC.py "$MFCUSERNAME" "$MFCPASSWORD"
+          python ./python/fetch_MFC.py "%MFCUSERNAME%" "%MFCPASSWORD%"
       - name: Save CSV Files
         run: |
           git config user.name github-actions
