@@ -9,17 +9,18 @@ import sys
 import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 
-#chromedriver_autoinstaller.install()
-#chrome_options = Options()
-#chrome_options.add_argument('--headless') #options=chrome_options
-driver = webdriver.Edge()
+chromedriver_autoinstaller.install()
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome(options=chrome_options)
 args = sys.argv
 
 USERNAME = args[1]
 PASSWORD = args[2]
 
 driver.get("https://myfly.club")
-# login to MFC
+
+# login to AC
 element = driver.find_element(By.ID, "loginUserName")
 element.clear()
 element.send_keys(USERNAME)
@@ -31,18 +32,14 @@ element.send_keys(Keys.RETURN)
 sleep(5)
 
 # close the announcment pop-up
-try:
-    element = driver.find_element(By.XPATH, "//div[@id='announcementModal']//span[@class='close']")
-    element.click()
-except:
-    pass
-sleep(2)
+element = driver.find_element(By.XPATH, "//div[@id='announcementModal']//span[@class='close']")
+element.click()
+sleep(1)
 
 # navigate to the airplane page
-JavascriptExecutor js = (JavascriptExecutor) driver;
 element = driver.find_element(By.XPATH, "//li[@class='button left-tab user-specific-tab airplaneCanvasTab']/div/div")
 # button is hidden so use js to click
-js.execute_script("$(arguments[0]).click();", element)
+driver.execute_script("$(arguments[0]).click();", element)
 sleep(5)
 
 # now we are on the airplane purchase page
@@ -52,24 +49,23 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(2)
+    sleep(1)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
     modelName = nameRow.text
-    print(modelName)
     modelName = modelName.replace("Model:", "")
     modelName = modelName.replace("\n", "")
     numInCirculation = numRow.text
-    print(numInCirculation)
     numInCirculation = numInCirculation.replace("Total in Circulation:", "")
     numInCirculation = int(numInCirculation)
     print(modelName)
-    print(numInCirculation)
+        #print(numInCirculation)
     planeNameAndNumInCirculation.append([modelName, numInCirculation])
+
  
 # write to file
-sleep(2)
+sleep(1)
 df = pd.DataFrame(planeNameAndNumInCirculation, columns=['Model', 'NumberInCirculation'])
 cwd = os.getcwd()
 today = date.today()
@@ -87,7 +83,7 @@ sleep(5)
 
 # grab all the clickable airlines
 airlineTabs = driver.find_elements(By.XPATH, "//div[@id='rivalsTable']//div[@class='table-row clickable']")
-sleep(4)
+sleep(1)
 # setup df
 listOfPlaneTypes = df['Model'].tolist()
 listOfPlaneTypes.insert(0, "Total")
@@ -122,10 +118,11 @@ for elem in airlineTabs:
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
 
+
+
+
 fleetdf.fillna(0,inplace=True)
 fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Rat Wings')]
-fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Koala Air')]
-fleetdf = fleetdf[~fleetdf['Airline'].astype(str).str.startswith('Ajwaa')]
 path = "./data/fleetReports/" + stringData + "-MFC-fleetReport.csv"
 fleetdf.to_csv(path_or_buf = path, index = False, escapechar = ' ')
 driver.quit()
