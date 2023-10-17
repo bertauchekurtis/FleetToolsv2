@@ -31,8 +31,11 @@ element.send_keys(Keys.RETURN)
 sleep(5)
 
 # close the announcment pop-up
-element = driver.find_element(By.XPATH, "//div[@id='announcementModal']//span[@class='close']")
-element.click()
+try:
+    element = driver.find_element(By.XPATH, "//div[@id='announcementModal']//span[@class='close']")
+    element.click()
+except:
+    pass
 sleep(2)
 
 # navigate to the airplane page
