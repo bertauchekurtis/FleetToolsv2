@@ -1,7 +1,7 @@
 name: Fetch AC
 on:
   schedule:
-    - cron: '0 0 * * 6'
+    - cron: '0 8 * * 6'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           ACUSERNAME:  ${{ secrets.ACUSERNAME }}
           ACPASSWORD:  ${{ secrets.ACPASSWORD }}
         run: |
-          python ./python/fetch.py "$ACUSERNAME" "$ACPASSWORD"
+          python ./python/fetch_AC.py "$ACUSERNAME" "$ACPASSWORD"
       - name: Save CSV Files
         run: |
           git config user.name github-actions
