@@ -33,7 +33,7 @@ sleep(5)
 # close the announcment pop-up
 element = driver.find_element(By.XPATH, "//div[@id='announcementModal']//span[@class='close']")
 element.click()
-sleep(1)
+sleep(2)
 
 # navigate to the airplane page
 element = driver.find_element(By.XPATH, "//li[@class='button left-tab user-specific-tab airplaneCanvasTab']/div/div")
@@ -48,7 +48,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(2)
+    sleep(4)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -83,7 +83,7 @@ sleep(5)
 
 # grab all the clickable airlines
 airlineTabs = driver.find_elements(By.XPATH, "//div[@id='rivalsTable']//div[@class='table-row clickable']")
-sleep(2)
+sleep(4)
 # setup df
 listOfPlaneTypes = df['Model'].tolist()
 listOfPlaneTypes.insert(0, "Total")
@@ -92,7 +92,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(3)
+    sleep(5)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
