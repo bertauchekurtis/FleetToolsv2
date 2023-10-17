@@ -9,10 +9,10 @@ import sys
 import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 
-chromedriver_autoinstaller.install()
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-driver = webdriver.Chrome(options=chrome_options)
+#chromedriver_autoinstaller.install()
+#chrome_options = Options()
+#chrome_options.add_argument('--headless') #options=chrome_options
+driver = webdriver.Edge()
 args = sys.argv
 
 USERNAME = args[1]
@@ -48,7 +48,7 @@ planeNameAndNumInCirculation = []
 # get all the data
 for elem in airplaneTabs:
     elem.click()
-    sleep(4)
+    sleep(2)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
     numRow = tableRows[13]
@@ -92,7 +92,7 @@ fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
     elem.click()
-    sleep(5)
+    sleep(2)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
     print(airlineName)
