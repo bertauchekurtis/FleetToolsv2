@@ -50,21 +50,19 @@ planeNameAndNumInCirculation = []
 for elem in airplaneTabs:
     elem.click()
     sleep(1)
-    try:
-        tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
-        nameRow = tableRows[0]
-        numRow = tableRows[13]
-        modelName = nameRow.text
-        modelName = modelName.replace("Model:", "")
-        modelName = modelName.replace("\n", "")
-        numInCirculation = numRow.text
-        numInCirculation = numInCirculation.replace("Total in Circulation:", "")
-        numInCirculation = int(numInCirculation)
-        print(modelName)
+    tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
+    nameRow = tableRows[0]
+    numRow = tableRows[13]
+    modelName = nameRow.text
+    modelName = modelName.replace("Model:", "")
+    modelName = modelName.replace("\n", "")
+    numInCirculation = numRow.text
+    numInCirculation = numInCirculation.replace("Total in Circulation:", "")
+    numInCirculation = int(numInCirculation)
+    print(modelName)
         #print(numInCirculation)
-        planeNameAndNumInCirculation.append([modelName, numInCirculation])
-    except:
-        print("hmmm")
+    planeNameAndNumInCirculation.append([modelName, numInCirculation])
+
  
 # write to file
 sleep(1)
@@ -119,7 +117,7 @@ for elem in airlineTabs:
     thisAirlineDF.drop([0], inplace = True)
     thisAirlineDF.rename(columns = toBeNamed, inplace = True)
     fleetdf = pd.concat([fleetdf, thisAirlineDF], axis=0, ignore_index=True)
-    break
+
 
 
 
