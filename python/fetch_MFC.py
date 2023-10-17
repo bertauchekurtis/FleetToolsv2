@@ -39,9 +39,10 @@ except:
 sleep(2)
 
 # navigate to the airplane page
+JavascriptExecutor js = (JavascriptExecutor) driver;
 element = driver.find_element(By.XPATH, "//li[@class='button left-tab user-specific-tab airplaneCanvasTab']/div/div")
 # button is hidden so use js to click
-driver.execute_script("$(arguments[0]).click();", element)
+js.execute_script("$(arguments[0]).click();", element)
 sleep(5)
 
 # now we are on the airplane purchase page
