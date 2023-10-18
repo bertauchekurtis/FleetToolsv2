@@ -1,6 +1,7 @@
 # kurtis bertauche
 # script to make flourish friendly data
 # 17 oct 2023
+setwd(getSrcDirectory(function(){})[1])
 
 MFCFileNames <- list.files(path = "../data/fleetReports/", pattern = "MFC")
 ACFileNames <- list.files(path = "../data/fleetReports/", pattern = "AC")
