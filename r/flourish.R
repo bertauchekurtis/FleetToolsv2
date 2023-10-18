@@ -4,7 +4,7 @@
 
 MFCFileNames <- list.files(path = "./data/fleetReports/", pattern = "MFC")
 ACFileNames <- list.files(path = "./data/fleetReports/", pattern = "AC")
-filepath <- "../data/fleetReports/"
+filepath <- "./data/fleetReports/"
 
 mfc <- data.frame(MFCFileNames)
 mfc <- mfc[order(as.Date(substring(mfc$MFCFileNames, 1, 11), format = "%b-%d-%Y")),]
