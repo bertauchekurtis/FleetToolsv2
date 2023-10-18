@@ -1,10 +1,9 @@
 # kurtis bertauche
 # script to make flourish friendly data
 # 17 oct 2023
-setwd(getSrcDirectory(function(){})[1])
 
-MFCFileNames <- list.files(path = "../data/fleetReports/", pattern = "MFC")
-ACFileNames <- list.files(path = "../data/fleetReports/", pattern = "AC")
+MFCFileNames <- list.files(path = "./data/fleetReports/", pattern = "MFC")
+ACFileNames <- list.files(path = "./data/fleetReports/", pattern = "AC")
 filepath <- "../data/fleetReports/"
 
 mfc <- data.frame(MFCFileNames)
@@ -43,13 +42,13 @@ ac_fleet[is.na(ac_fleet)] <- 0
 mfc_fleet[is.na(mfc_fleet)] <- 0
 
 write.table(ac_fleet,
-            file = "../data/flourish/AC_Largest_Fleets_Flourish_Data.tsv",
+            file = "./data/flourish/AC_Largest_Fleets_Flourish_Data.tsv",
             quote = FALSE,
             sep = "\t",
             row.names = FALSE)
 
 write.table(mfc_fleet,
-            file = "../data/flourish/MFC_Largest_Fleets_Flourish_Data.tsv",
+            file = "./data/flourish/MFC_Largest_Fleets_Flourish_Data.tsv",
             quote = FALSE,
             sep = "\t",
             row.names = FALSE)
@@ -94,13 +93,13 @@ ac_planes[is.na(ac_planes)] <- 0
 mfc_planes[is.na(mfc_planes)] <- 0
 
 write.table(ac_planes,
-            file = "../data/flourish/AC_Planes_Flourish_Data.tsv",
+            file = "./data/flourish/AC_Planes_Flourish_Data.tsv",
             quote = FALSE,
             sep = "\t",
             row.names = FALSE)
 
 write.table(mfc_planes,
-            file = "../data/flourish/MFC_Planes_Flourish_Data.tsv",
+            file = "./data/flourish/MFC_Planes_Flourish_Data.tsv",
             quote = FALSE,
             sep = "\t",
             row.names = FALSE)
