@@ -92,7 +92,8 @@ listOfPlaneTypes.insert(0, "Airline")
 fleetdf = pd.DataFrame(columns = listOfPlaneTypes)
 
 for elem in airlineTabs:
-    elem.click()
+    # elem.click()
+    driver.execute_script("arguments[0].click();", elem)
     sleep(2)
     airlineName = driver.find_element(By.XPATH, "//div[@id='rivalDetails']//span[@class='airlineName']")
     airlineName = airlineName.text
