@@ -48,7 +48,8 @@ planeNameAndNumInCirculation = []
 
 # get all the data
 for elem in airplaneTabs:
-    elem.click()
+    # elem.click()
+    driver.execute_script("arguments[0].click();", elem)
     sleep(1)
     tableRows = driver.find_elements(By.XPATH, "//div[@id='airplaneModelDetail']/div[@class='section']/div[@class='table']/div[@class='table-row']")
     nameRow = tableRows[0]
